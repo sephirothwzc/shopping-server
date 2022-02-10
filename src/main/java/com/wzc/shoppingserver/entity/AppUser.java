@@ -15,7 +15,7 @@ public class AppUser extends BaseEntity  implements Serializable {
     private String phone;
 
     @Column(nullable = false, columnDefinition = "varchar(200) comment '密码'")
-    private String password;
+    private String password="123456";
 
     @Column(nullable = false, columnDefinition = "varchar(50) comment '昵称'")
     private String nickname;

@@ -50,5 +50,5 @@ public abstract class BaseEntity {
     private String remark;
 
     @Column(name = "enable_flag", nullable = false, columnDefinition = "int DEFAULT 1 comment '状态'")
-    private Integer enableFlag;
+    private Integer enableFlag = 1;
 }
