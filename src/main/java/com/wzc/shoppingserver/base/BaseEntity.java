@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public abstract class BaseEntity {
 
     @javax.persistence.Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, columnDefinition = "int comment 'id'")
     private Long id;
 
@@ -37,7 +37,7 @@ public abstract class BaseEntity {
      */
     @CreatedBy
     @Column(name = "created_by", nullable = true, columnDefinition = "int comment '创建人id'")
-    private Long createdBy;
+    private Long createdBy = Long.valueOf(1);
 
     /**
      * 更新人

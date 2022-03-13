@@ -1,6 +1,8 @@
 package com.wzc.shoppingserver.entity;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.wzc.shoppingserver.base.ArrayJsonConverter;
 import com.wzc.shoppingserver.base.BaseEntity;
 import com.wzc.shoppingserver.base.HashMapConverter;
 import lombok.Data;
@@ -32,8 +34,8 @@ public class MallGoods extends BaseEntity implements Serializable {
     private String goodsDetails;
 
     @Column(name = "goods_tag", columnDefinition = "json comment '商品标签'")
-    @Convert(converter = HashMapConverter.class)
-    private JSON goodsTag;
+    @Convert(converter = ArrayJsonConverter.class)
+    private JSONArray goodsTag;
 
     /**
      * 一个商品多个价格不同规格
