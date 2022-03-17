@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public abstract class BaseEntity {
 
     @javax.persistence.Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, columnDefinition = "int comment 'id'")
     private Long id;
 
@@ -21,7 +21,7 @@ public abstract class BaseEntity {
     /**
      * 创建时间
      */
-    @Column(name = "created_at", nullable = false, columnDefinition = "datetime default CURRENT_TIMESTAMP comment '创建时间'")
+    @Column(name = "created_at", columnDefinition = "datetime default CURRENT_TIMESTAMP comment '创建时间'")
     @CreatedDate
     private LocalDateTime createdAt;
 
@@ -29,26 +29,26 @@ public abstract class BaseEntity {
      * 更新时间
      */
     @LastModifiedDate
-    @Column(name = "updated_at", nullable = false, columnDefinition = "datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '更新时间'")
-    private LocalDateTime updatedAt;
+    @Column(name = "updated_at", columnDefinition = "datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '更新时间'")
+    private LocalDateTime updatedAt = LocalDateTime.now();
 
     /**
      * 创建人
      */
     @CreatedBy
-    @Column(name = "created_by", nullable = true, columnDefinition = "int comment '创建人id'")
-    private Long createdBy;
+    @Column(name = "created_by", columnDefinition = "int comment '创建人id'")
+    private Long createdBy = Long.valueOf(1);
 
     /**
      * 更新人
      */
     @LastModifiedBy
-    @Column(name = "updated_by", nullable = true, columnDefinition = "int comment '更新人id'")
+    @Column(name = "updated_by", columnDefinition = "int comment '更新人id'")
     private Long updatedBy;
 
     @Column(nullable = true, columnDefinition = "varchar(255) comment '备注'")
     private String remark;
 
     @Column(name = "enable_flag", nullable = false, columnDefinition = "int DEFAULT 1 comment '状态'")
-    private Integer enableFlag;
+    private Integer enableFlag = 1;
 }

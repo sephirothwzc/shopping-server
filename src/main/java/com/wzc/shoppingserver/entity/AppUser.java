@@ -1,5 +1,6 @@
 package com.wzc.shoppingserver.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.wzc.shoppingserver.base.BaseEntity;
 import lombok.Data;
 
@@ -14,8 +15,9 @@ public class AppUser extends BaseEntity  implements Serializable {
     @Column(columnDefinition = "varchar(50) comment '手机号'")
     private String phone;
 
+    @JsonIgnore
     @Column(nullable = false, columnDefinition = "varchar(200) comment '密码'")
-    private String password;
+    private String password="123456";
 
     @Column(nullable = false, columnDefinition = "varchar(50) comment '昵称'")
     private String nickname;
