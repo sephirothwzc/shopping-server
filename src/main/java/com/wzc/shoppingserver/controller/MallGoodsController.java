@@ -4,6 +4,7 @@ import com.sipios.springsearch.anotation.SearchSpec;
 import com.wzc.shoppingserver.entity.AppUser;
 import com.wzc.shoppingserver.entity.MallGoods;
 import com.wzc.shoppingserver.repository.MallGoodsRepository;
+import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -36,7 +37,7 @@ public class MallGoodsController {
                                     @RequestParam(value="size",defaultValue = "20") int size,
                                     @RequestParam(value="sort",defaultValue = "createdAt") String sortBy,
                                     @RequestParam(value="descend",defaultValue = "DESC") Sort.Direction descend) {
-        Pageable paging = PageRequest.of(page, size, Sort.by(descend,sortBy));
+        var paging = PageRequest.of(page, size, Sort.by(descend,sortBy));
         return this.mallGoodsRepository.findAll(Specification.where(specs),paging);
     }
 }
