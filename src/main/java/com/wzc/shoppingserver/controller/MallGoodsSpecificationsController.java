@@ -26,6 +26,15 @@ public class MallGoodsSpecificationsController {
         this.repository = repository;
     }
 
+    /**
+     * http://localhost:3000/api/mall-goods-specifications/page?search=mallGoods.id:'17'&page=0&size=8
+     * @param specs
+     * @param page
+     * @param size
+     * @param sortBy
+     * @param descend
+     * @return
+     */
     @GetMapping("/page")
     public Page<MallGoodsSpecifications> searchBy(@SearchSpec Specification<MallGoodsSpecifications> specs,
                                                   @RequestParam(value = "page",defaultValue = "0") int page,
